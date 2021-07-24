@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="pim">
+	<!-- 포인트 충전 -->
+	<update id="pointaccount" parameterType="memberdto">
+		UPDATE
+		MEMBER SET MACCOUNT=MACCOUNT + #{maccount} WHERE MID=#{mid}
+	</update>
+
+	<!-- 포인트 수정 후 상세 조회 -->
+	<select id="memberpoint" parameterType="String"
+		resultType="memberdto">
+		SELECT * FROM MEMBER WHERE MID=#{mid}
+	</select>
+
+	<!-- 포인트 충전 후 ACCOUNT 테이블 데이터 추가 -->
+	<insert id="pointaccountplus" parameterType="accountdto">
+		INSERT INTO ACCOUNT
+		(ANUMBER,MID,MACCOUNT,ADATE) VALUES
+		(ACCOUNT_SEQ.NEXTVAL,#{mid},#{maccount},SYSDATE)
+	</insert>
+	
+	<!-- 포인트 충전 갯수 -->
+	<select id="listcount" parameterType="String" resultType="int">
+		SELECT COUNT(ANUMBER) FROM
+		ACCOUNT WHERE MID=#{mid}
+	</select>
+	 
+	<select id="pointaccountlist" parameterType="java.util.HashMap"
+		resultType="accountdto">
+		SELECT * FROM (SELECT B.*, ROW_NUMBER() OVER(ORDER BY
+		ANUMBER DESC)
+		AS RN FROM ACCOUNT B) WHERE MID=#{mid} AND RN BETWEEN #{startRow}
+		AND
+		#{endRow}
+	</select> 
+	
+</mapper>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
