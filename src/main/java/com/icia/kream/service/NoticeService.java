@@ -6,11 +6,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.icia.kream.dao.NoticeDAO;
-import com.icia.kream.dto.BidDTO;
 import com.icia.kream.dto.NoticeDTO;
 import com.icia.kream.dto.PageDTO;
 
-import oracle.net.resolver.NavAddress;
 
 @Service
 public class NoticeService {
