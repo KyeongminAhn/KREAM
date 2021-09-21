@@ -3,18 +3,23 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xmlns:aop="http://www.springframework.org/schema/aop"
 	xsi:schemaLocation="http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
-	<bean id="dataSource" 
-		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />
-		<property name="username" value="SPRING0518"/>
-		<property name="password" value="1234"/>
+<!--	<bean id="dataSource" -->
+<!--		class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+<!--		<property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>-->
+<!--		<property name="url" value="jdbc:oracle:thin:@localhost:1521:XE" />-->
+<!--		<property name="username" value="SPRING0518"/>-->
+<!--		<property name="password" value="1234"/>-->
+<!--	</bean>-->
+	<bean id="dataSource"
+		  class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="com.mysql.cj.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://kream-identifier.cjktwthzr5ug.us-east-2.rds.amazonaws.com:3306" />
+		<property name="username" value="root"/>
+		<property name="password" value="1234qwer!"/>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
